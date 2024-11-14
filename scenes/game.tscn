@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d6cgjkoj6w7a"]
+
+[ext_resource type="PackedScene" uid="uid://3v7lqrghp860" path="res://scenes/player/player.tscn" id="1_g002x"]
+
+[sub_resource type="TileSet" id="TileSet_670bo"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_670bo")
+
+[node name="Player" parent="." instance=ExtResource("1_g002x")]
+scale = Vector2(0.1, 0.1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
