@@ -1,13 +1,13 @@
 [gd_scene load_steps=39 format=3 uid="uid://cc7l5xxs7rgah"]
 
 [ext_resource type="Script" path="res://scripts/Player/Player.cs" id="1_nocbg"]
-[ext_resource type="Texture2D" uid="uid://kbpj258ijsw7" path="res://assets/Player/Character_Left_Arm.png" id="1_rxw4c"]
-[ext_resource type="Texture2D" uid="uid://dsfpw6mktj7d1" path="res://assets/Player/Character_Left_Leg.png" id="2_cn3ak"]
+[ext_resource type="Texture2D" uid="uid://72s5ufkj6e53" path="res://assets/Player/Character_Left_Arm.png" id="1_rxw4c"]
+[ext_resource type="Texture2D" uid="uid://clp55v064pkmt" path="res://assets/Player/Character_Left_Leg.png" id="2_cn3ak"]
 [ext_resource type="Texture2D" uid="uid://dwke4t8qrr0i" path="res://assets/Player/Character_Body.png" id="3_xluc6"]
 [ext_resource type="Texture2D" uid="uid://c4tpyqec2811q" path="res://assets/Player/Walk/Character_Walk_Left_Leg.png" id="4_8pblw"]
 [ext_resource type="Texture2D" uid="uid://bbi36iqx2vai" path="res://assets/Player/Character_Head.png" id="4_ku02j"]
-[ext_resource type="Texture2D" uid="uid://7tbf8xmwimf5" path="res://assets/Player/Character_Right_Leg.png" id="5_qxtap"]
-[ext_resource type="Texture2D" uid="uid://b6w4mhur1alcw" path="res://assets/Player/Character_Right_Arm.png" id="6_hsw6p"]
+[ext_resource type="Texture2D" uid="uid://b2q4ehckb6cjc" path="res://assets/Player/Character_Right_Leg.png" id="5_qxtap"]
+[ext_resource type="Texture2D" uid="uid://boe41hvacaaj4" path="res://assets/Player/Character_Right_Arm.png" id="6_hsw6p"]
 [ext_resource type="Texture2D" uid="uid://ck1se7kwvo64v" path="res://assets/Player/Walk/Character_Walk_Right_Leg.png" id="8_xtv7r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ypgs"]
@@ -251,7 +251,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mogyc"]
-size = Vector2(19, 86)
+size = Vector2(19, 88)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nocbg")
@@ -281,5 +281,5 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_hxkov")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 5)
+position = Vector2(-1.5, 6)
 shape = SubResource("RectangleShape2D_mogyc")

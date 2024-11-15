@@ -4,7 +4,7 @@ public partial class Player : CharacterBody2D
 {
 	public CollisionShape2D collisionBox;
 	public Vector2 center;
-	public const float Speed = 400.0f;
+	public const float Speed = 300.0f;
 	public const float JumpVelocity = -1000.0f;
 
     public override void _Ready()
@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Vector2 direction = Input.GetVector("move_left", "move_right", "_", "_");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
