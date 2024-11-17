@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
     {
 		head = GetNode<AnimatedSprite2D>("CharacterHead");
 		body = GetNode<AnimatedSprite2D>("CharacterBody");
+		BodyRotationCenter = GetNode<Node2D>("BodyRotationCenter");
 		rightArm = GetNode<AnimatedSprite2D>("CharacterRightArm");
 		leftArm = GetNode<AnimatedSprite2D>("CharacterLeftArm");
 		rightLeg = GetNode<AnimatedSprite2D>("CharacterRightLeg");
@@ -31,9 +32,13 @@ public partial class Player : CharacterBody2D
 		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+		}
+
+		if (Input.IsPhysicalKeyPressed(Key.J)){
+			RotateBody(.1f);
 		}
 
 		// Get the input direction and handle the movement/deceleration.
