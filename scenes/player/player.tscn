@@ -256,33 +256,55 @@ size = Vector2(19, 88)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nocbg")
 
-[node name="CharacterLeftArm" type="AnimatedSprite2D" parent="."]
+[node name="CharacterLeftArm" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterLeftArm"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3ypgs")
 
-[node name="CharacterLeftLeg" type="AnimatedSprite2D" parent="."]
+[node name="RotationCenter" type="Node2D" parent="CharacterLeftArm"]
+
+[node name="CharacterLeftLeg" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterLeftLeg"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ub4a2")
 
-[node name="CharacterBody" type="AnimatedSprite2D" parent="."]
+[node name="RotationCenter" type="Node2D" parent="CharacterLeftLeg"]
+
+[node name="CharacterBody" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterBody"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_p7yun")
 
-[node name="BodyRotationCenter" type="Node2D" parent="."]
+[node name="RotationCenter" type="Node2D" parent="CharacterBody"]
 position = Vector2(-6.99999, 15)
 scale = Vector2(0.1, 0.1)
 
-[node name="CharacterHead" type="AnimatedSprite2D" parent="."]
+[node name="CharacterHead" type="Node2D" parent="."]
 scale = Vector2(0.1, 0.1)
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterHead"]
 sprite_frames = SubResource("SpriteFrames_ejrro")
 
-[node name="CharacterRightLeg" type="AnimatedSprite2D" parent="."]
+[node name="RotationCenter" type="Node2D" parent="CharacterHead"]
+
+[node name="CharacterRightLeg" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightLeg"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ule5i")
 
-[node name="CharacterRightArm" type="AnimatedSprite2D" parent="."]
+[node name="RotationCenter" type="Node2D" parent="CharacterRightLeg"]
+
+[node name="CharacterRightArm" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightArm"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_hxkov")
+
+[node name="RotationCenter" type="Node2D" parent="CharacterRightArm"]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 6)

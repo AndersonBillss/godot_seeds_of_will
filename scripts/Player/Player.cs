@@ -9,14 +9,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-		head = GetNode<AnimatedSprite2D>("CharacterHead");
-		body = GetNode<AnimatedSprite2D>("CharacterBody");
-		BodyRotationCenter = GetNode<Node2D>("BodyRotationCenter");
-		rightArm = GetNode<AnimatedSprite2D>("CharacterRightArm");
-		leftArm = GetNode<AnimatedSprite2D>("CharacterLeftArm");
-		rightLeg = GetNode<AnimatedSprite2D>("CharacterRightLeg");
-		leftLeg = GetNode<AnimatedSprite2D>("CharacterLeftLeg");
-
+		AnimationInit();
         collisionBox = GetNode<CollisionShape2D>("Collision");
 		center = collisionBox.Position;
     }
