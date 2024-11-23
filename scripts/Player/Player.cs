@@ -30,9 +30,6 @@ public partial class Player : CharacterBody2D
 			velocity.Y = JumpVelocity;
 		}
 
-		if (Input.IsPhysicalKeyPressed(Key.J)){
-			RotateBody(.1f);
-		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -59,6 +56,10 @@ public partial class Player : CharacterBody2D
 		if(!IsOnFloor()){
 			PlayAnimation("jump");
 		}
+
+		// if(Input.IsH(Key.J)){
+		// 	Test();
+		// }
 
 		Velocity = velocity;
 		MoveAndSlide();
