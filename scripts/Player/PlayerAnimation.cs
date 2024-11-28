@@ -47,8 +47,15 @@ public partial class Player: CharacterBody2D{
             rightLeg.SetAnimation("walk");
             leftLeg.SetAnimation("walk");
         }
+        if(animationName == "run"){
+            rightLeg.SetAnimation("run");
+            leftLeg.SetAnimation("run");
+        }
         if(animationName == "default"){
-            if(currentAnimation == "walk"){
+            if(currentAnimation == "run"){
+
+
+            } else if(currentAnimation == "walk"){
                 easingOutOfWalkLeft = true;
                 easingOutOfWalkRight = true;
             } else {
@@ -64,16 +71,16 @@ public partial class Player: CharacterBody2D{
     }
 
 
-    public bool easingOutOfWalkRight = false;
     public bool easingOutOfWalkLeft = false;
+    public bool easingOutOfWalkRight = false;
+    public bool easingOutOfRunLeft = false;
+    public bool easingOutOfRunRight = false;
     public void AnimateFrame(){
         head.NextFrame();
         rightArm.NextFrame();
         leftArm.NextFrame();
         body.NextFrame();
         AnimateLegs();
-
-
     }
 
     private void AnimateLegs(){
