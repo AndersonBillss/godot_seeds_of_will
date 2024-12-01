@@ -4,8 +4,9 @@ public partial class Player : CharacterBody2D
 {
 	public CollisionShape2D collisionBox;
 	public Vector2 center;
-	public const float Speed = 600.0f;
-	public const float JumpVelocity = -1000.0f;
+	public const float walkSpeed = 300.0f;
+	public const float runSpeed = 500.0f;
+	public const float JumpVelocity = -1200.0f;
 
     public override void _Ready()
     {
@@ -36,14 +37,10 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("move_left", "move_right", "_", "_");
 		if (direction != Vector2.Zero)
 		{
-			float newVelocity = direction.X * Speed;
-			if(Input.IsActionPressed("walk")){
-				newVelocity /= 2;
-			}
-			velocity.X = newVelocity;
+			velocity.X = Input.IsActionPressed("walk")? direction.X * walkSpeed : direction.X * runSpeed;
 		}
 		else{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, runSpeed);
 		}
 
 		if (direction.X < 0 && IsFacingRight()){

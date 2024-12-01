@@ -23,7 +23,6 @@ namespace Utils.AnimationLink{
             }
         }
 
-
         private static void SetRotationAround(Node2D rotatingItem, Vector2 relativePosition, float degrees){
             Vector2 direction = -relativePosition;
             
@@ -37,6 +36,10 @@ namespace Utils.AnimationLink{
 
         public void SetAnimation(string animationName){
             animatedSprite.Animation = animationName;
+        }
+        public void SetFrame(int frame){
+            frame %= GetFrameCount();
+            animatedSprite.Frame = frame;
         }
         public void NextFrame(){
             int frameCount = animatedSprite.SpriteFrames.GetFrameCount(animatedSprite.Animation);
@@ -67,5 +70,10 @@ namespace Utils.AnimationLink{
         public int GetFrameCount(){
             return animatedSprite.SpriteFrames.GetFrameCount(animatedSprite.Animation);
         }
+
+        public int GetCurrentFrame(){
+            return animatedSprite.Frame;
+        }
+
     }
 }

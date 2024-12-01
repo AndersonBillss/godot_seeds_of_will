@@ -421,7 +421,6 @@ position = Vector2(-10, -320)
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightLeg"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ule5i")
-animation = &"run"
 
 [node name="RotationCenter" type="Node2D" parent="CharacterRightLeg"]
 

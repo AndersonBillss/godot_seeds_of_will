@@ -48,14 +48,25 @@ public partial class Player: CharacterBody2D{
             leftLeg.SetAnimation("walk");
         }
         if(animationName == "run"){
+            // body.SetRotation(15);
+            // head.SetRotation(-15);
+            // rightArm.SetRotation(-10);
+            // leftArm.SetRotation(-10);
             rightLeg.SetAnimation("run");
             leftLeg.SetAnimation("run");
         }
         if(animationName == "default"){
-            if(currentAnimation == "run"){
-
-
-            } else if(currentAnimation == "walk"){
+            if(currentAnimation == "walk"){
+                easingOutOfWalkLeft = true;
+                easingOutOfWalkRight = true;
+            } else if (currentAnimation == "run"){
+                //transition run into a walk then ease out
+                leftLeg.SetAnimation("walk");
+                rightLeg.SetAnimation("walk");
+                int[] runToWalkLeft = {4,5,5,6,7,8,9,1};
+                int[] runToWalkRight = {2,3,4,6,9,0,0,1};
+                leftLeg.SetFrame(runToWalkLeft[leftLeg.GetCurrentFrame()]);
+                rightLeg.SetFrame(runToWalkRight[rightLeg.GetCurrentFrame()]);
                 easingOutOfWalkLeft = true;
                 easingOutOfWalkRight = true;
             } else {
@@ -86,13 +97,7 @@ public partial class Player: CharacterBody2D{
     private void AnimateLegs(){
         if(easingOutOfWalkRight && currentAnimation == "default"){
             int currentFrame = rightLeg.animatedSprite.Frame;
-            if(currentFrame == 1){
-                rightLeg.NextFrame();
-            }
-            if(currentFrame == 3){
-                leftLeg.PrevFrame();
-            }
-            bool breakOut = EaseOut(rightLeg, (4,0), (1,7));
+            bool breakOut = EaseOut(rightLeg, (4,0), (1,7), new int[]{1,3});
             easingOutOfWalkRight = !breakOut;
             if(breakOut || currentFrame == 3){
               rightLeg.SetAnimation("default");
@@ -104,13 +109,7 @@ public partial class Player: CharacterBody2D{
         }
         if(easingOutOfWalkLeft && currentAnimation == "default"){
             int currentFrame = leftLeg.animatedSprite.Frame;
-            if(currentFrame == 6){
-                leftLeg.NextFrame();
-            }
-            if(currentFrame == 8){
-                leftLeg.PrevFrame();
-            }
-            bool breakOut = EaseOut(leftLeg, (0,5), (6,2));
+            bool breakOut = EaseOut(leftLeg, (0,5), (6,2), new int[]{6,8});
             easingOutOfWalkLeft = !breakOut;
             if(breakOut || currentFrame == 8){
               leftLeg.SetAnimation("default");
@@ -120,7 +119,10 @@ public partial class Player: CharacterBody2D{
         }
     }
 
-    private static bool EaseOut(AnimationLink animationLink, (int, int) targetFrames, (int, int) endFrames){     
+    private static bool EaseOut(AnimationLink animationLink, (int, int) targetFrames, (int, int) endFrames, int[] skippedFrames=null){     
+        skippedFrames ??= System.Array.Empty<int>();
+        HashSet<int> skippedFramesSet = new(skippedFrames);
+
         int currentFrame = animationLink.animatedSprite.Frame;
         Array<int> targetFrameArray = new() { targetFrames.Item1, targetFrames.Item2};
         HashSet<int> targetFrameSet = new(targetFrameArray);
@@ -155,14 +157,26 @@ public partial class Player: CharacterBody2D{
         if(closestEndFrameDistance > closestTargetFrameDistance){
             if(closestEndFrameDistance < 0){
                 animationLink.PrevFrame();
+                if(skippedFramesSet.Contains(animationLink.GetCurrentFrame())){
+                    animationLink.PrevFrame();
+                }
             } else {
                 animationLink.NextFrame();
+                if(skippedFramesSet.Contains(animationLink.GetCurrentFrame())){
+                    animationLink.NextFrame();
+                }
             }
         } else {
             if(closestTargetFrameDistance > 0){
                 animationLink.PrevFrame();
+                if(skippedFramesSet.Contains(animationLink.GetCurrentFrame())){
+                    animationLink.PrevFrame();
+                }
             } else {
                 animationLink.NextFrame();
+                if(skippedFramesSet.Contains(animationLink.GetCurrentFrame())){
+                    animationLink.NextFrame();
+                }
             }
         }
         return false;
