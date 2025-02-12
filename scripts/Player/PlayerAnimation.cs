@@ -15,6 +15,7 @@ public partial class Player: CharacterBody2D{
     public string currentAnimation = "";
     private int animationLength = 0;
     private bool repeatAnimation = true;
+    private bool allowInterruption = true;
 
     public void AnimationInit(){
         Node2D headParent = GetNode<Node2D>("CharacterHead");
@@ -37,6 +38,9 @@ public partial class Player: CharacterBody2D{
 
     public void PlayAnimation(string animationName){
         string prevAnimation = currentAnimation;
+        if(!allowInterruption){
+            return;
+        }
         if(animationName == prevAnimation){
             return;
         }
@@ -50,6 +54,7 @@ public partial class Player: CharacterBody2D{
             leftArm.SetAnimation("default");
             head.SetAnimation("default");
             body.SetAnimation("idle");
+
             repeatAnimation = true;
         }
         if(animationName == "run"){
@@ -60,6 +65,7 @@ public partial class Player: CharacterBody2D{
             leftArm.SetAnimation("run");
             head.SetAnimation("run");
             body.SetAnimation("run");
+
             repeatAnimation = true;
         }
         if(animationName == "default"){
@@ -69,6 +75,7 @@ public partial class Player: CharacterBody2D{
             leftArm.SetAnimation("default");
             head.SetAnimation("default");
             body.SetAnimation("idle");
+
             repeatAnimation = true;
         }
         if(animationName == "jump"){
@@ -88,6 +95,7 @@ public partial class Player: CharacterBody2D{
             leftArm.SetAnimation("run");
             head.SetAnimation("run");
             body.SetAnimation("run");
+
             repeatAnimation = false;
             animationLength = 3;
         }
@@ -98,8 +106,11 @@ public partial class Player: CharacterBody2D{
             leftArm.SetAnimation("attack_one_hand_1");
             head.SetAnimation("attack_one_hand_1");
             body.SetAnimation("attack_one_hand_1");
+            
             repeatAnimation = false;
+            allowInterruption = false;
             animationLength = 3;
+            
         }
         iterationCount = 0;
         currentAnimation = animationName;
@@ -117,6 +128,7 @@ public partial class Player: CharacterBody2D{
             iterationCount++;
         }
         if(!repeatAnimation  && iterationCount >= animationLength){
+            allowInterruption = true;
             return;
         }
         head.NextFrame();
