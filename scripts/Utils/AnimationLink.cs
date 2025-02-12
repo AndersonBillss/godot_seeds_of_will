@@ -75,5 +75,8 @@ namespace Utils.AnimationLink{
             return animatedSprite.Frame;
         }
 
+        public bool IsLastFame(){
+            return GetCurrentFrame() == GetFrameCount()-1;
+        }
     }
 }

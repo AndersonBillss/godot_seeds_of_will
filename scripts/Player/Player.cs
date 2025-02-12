@@ -30,6 +30,9 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.Y = JumpVelocity;
 		}
+		if(Input.IsActionJustReleased("jump") && velocity.Y < 0){
+			velocity.Y *= .35f;
+		}
 
 
 		// Get the input direction and handle the movement/deceleration.
@@ -55,11 +58,16 @@ public partial class Player : CharacterBody2D
 			} else {
 				PlayAnimation("run");
 			}
-		} else {
+		}
+		if(direction.X == 0 && IsOnFloor()){
 			PlayAnimation("default");
 		}
 		if(!IsOnFloor()){
-			PlayAnimation("jump");
+			if(velocity.Y < -400){
+				PlayAnimation("jump");
+			} else {
+				PlayAnimation("fall");
+			}
 		}
 
 		Velocity = velocity;
@@ -72,6 +80,10 @@ public partial class Player : CharacterBody2D
 		} else {
 			return false;
 		}
+	}
+
+	private void Attack(){
+		PlayAnimation("attack_one_hand_1");
 	}
 
 	public void Flip(){
