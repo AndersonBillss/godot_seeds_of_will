@@ -895,6 +895,7 @@ size = Vector2(19, 88)
 script = ExtResource("1_nocbg")
 
 [node name="CharacterLeftArm" type="Node2D" parent="."]
+z_index = 110
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterLeftArm"]
 scale = Vector2(0.1, 0.1)
@@ -904,6 +905,7 @@ sprite_frames = SubResource("SpriteFrames_3ypgs")
 position = Vector2(-2, -19)
 
 [node name="CharacterLeftLeg" type="Node2D" parent="."]
+z_index = 120
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterLeftLeg"]
 scale = Vector2(0.1, 0.1)
@@ -912,6 +914,7 @@ sprite_frames = SubResource("SpriteFrames_ub4a2")
 [node name="RotationCenter" type="Node2D" parent="CharacterLeftLeg"]
 
 [node name="CharacterBody" type="Node2D" parent="."]
+z_index = 130
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterBody"]
 scale = Vector2(0.1, 0.1)
@@ -922,6 +925,7 @@ position = Vector2(-6.99999, 15)
 scale = Vector2(0.1, 0.1)
 
 [node name="CharacterHead" type="Node2D" parent="."]
+z_index = 140
 scale = Vector2(0.1, 0.1)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterHead"]
@@ -931,6 +935,7 @@ sprite_frames = SubResource("SpriteFrames_ejrro")
 position = Vector2(-10, -320)
 
 [node name="CharacterRightLeg" type="Node2D" parent="."]
+z_index = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightLeg"]
 scale = Vector2(0.1, 0.1)
@@ -939,6 +944,7 @@ sprite_frames = SubResource("SpriteFrames_ule5i")
 [node name="RotationCenter" type="Node2D" parent="CharacterRightLeg"]
 
 [node name="CharacterRightArm" type="Node2D" parent="."]
+z_index = 160
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightArm"]
 scale = Vector2(0.1, 0.1)

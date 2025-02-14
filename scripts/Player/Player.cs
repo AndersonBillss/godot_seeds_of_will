@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public partial class Player : CharacterBody2D
@@ -8,11 +9,25 @@ public partial class Player : CharacterBody2D
 	public const float runSpeed = 500.0f;
 	public const float JumpVelocity = -1200.0f;
 
+	private List<Weapon> _weapons = new();
+	private AnimatedSprite2D _selectedWeaponSprites;
+	private Sprite2D _selectedWeaponSlash;
+
     public override void _Ready()
     {
 		AnimationInit();
         collisionBox = GetNode<CollisionShape2D>("Collision");
 		center = collisionBox.Position;
+	    foreach (Node child in GetChildren())
+        {
+            if (child is Weapon weapon)
+            {
+                _weapons.Add(weapon);
+            }
+        }
+		if(_weapons.Count > 0)
+		_selectedWeaponSprites = _weapons[0].GetNode<AnimatedSprite2D>("SwordSprites");
+		_selectedWeaponSlash = _weapons[0].GetNode<Sprite2D>("SlashSprite");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -88,7 +103,10 @@ public partial class Player : CharacterBody2D
 	}
 
 	private void Attack(){
-		PlayAnimation("attack_one_hand_1");
+		if (_weapons.Count > 0){
+			PlayAnimation("attack_one_hand_1");
+			_weapons[0].Attack();
+		}
 	}
 
 	public void Flip(){

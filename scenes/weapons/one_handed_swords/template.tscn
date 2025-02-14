@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://wv4i3fahmyq4"]
+
+[ext_resource type="Texture2D" uid="uid://ky5v2hfenctg" path="res://assets/Weapons/Sword_Template.png" id="1_rww3c"]
+[ext_resource type="Texture2D" uid="uid://vljxsd15w17g" path="res://assets/Weapons/One_Hand_Slash_1_Template.png" id="2_kdnq3"]
+[ext_resource type="Script" path="res://scripts/Weapons/OneHandedSword.cs" id="3_ouljl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ue7"]
+atlas = ExtResource("1_rww3c")
+region = Rect2(0, 0, 2160, 1620)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwvps"]
+atlas = ExtResource("1_rww3c")
+region = Rect2(0, 1620, 2160, 1620)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tun01"]
+atlas = ExtResource("1_rww3c")
+region = Rect2(0, 3240, 2160, 1620)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efbky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65ue7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwvps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tun01")
+}],
+"loop": true,
+"name": &"angles",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ebn3"]
+radius = 70.0
+height = 224.0
+
+[node name="Template" type="Node2D"]
+script = ExtResource("3_ouljl")
+
+[node name="SwordSprites" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 155
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_efbky")
+animation = &"angles"
+
+[node name="SlashSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_kdnq3")
+
+[node name="HitArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea"]
+visible = false
+position = Vector2(6, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7ebn3")
