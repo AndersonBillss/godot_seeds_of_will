@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-public partial class Player : CharacterBody2D
+public partial class PlayerController : CharacterBody2D
 {
 	public CollisionShape2D collisionBox;
 	public Vector2 center;

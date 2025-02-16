@@ -1,7 +1,7 @@
 [gd_scene load_steps=134 format=3 uid="uid://cc7l5xxs7rgah"]
 
-[ext_resource type="Script" path="res://scripts/Player/Player.cs" id="1_nocbg"]
 [ext_resource type="Texture2D" uid="uid://72s5ufkj6e53" path="res://assets/Player/Character_Left_Arm.png" id="1_rxw4c"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerController.cs" id="1_ygy1y"]
 [ext_resource type="Texture2D" uid="uid://clp55v064pkmt" path="res://assets/Player/Character_Left_Leg.png" id="2_cn3ak"]
 [ext_resource type="Texture2D" uid="uid://d4bbk6oul2guu" path="res://assets/Player/Attack/One_Hand_1/Left_Arm.png" id="2_db13u"]
 [ext_resource type="Texture2D" uid="uid://c4da2h8gn61ut" path="res://assets/Player/Run/Character_Run_Left_Arm.png" id="3_od464"]
@@ -892,7 +892,7 @@ animations = [{
 size = Vector2(19, 88)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_nocbg")
+script = ExtResource("1_ygy1y")
 
 [node name="CharacterLeftArm" type="Node2D" parent="."]
 z_index = 110
