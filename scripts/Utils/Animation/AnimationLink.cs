@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace Utils.Animation;
+namespace scripts.Utils.Animation;
 
 public class AnimationLink{
     public Node2D parentNode;
@@ -10,8 +10,8 @@ public class AnimationLink{
     public AnimationLink[] branches;
     public AnimationLink(Node2D parentNode, AnimationLink[] branches = null){
         this.parentNode = parentNode;
-        this.animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
-        this.rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
+        animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
+        rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
         this.branches = branches ?? Array.Empty<AnimationLink>();
     }
 

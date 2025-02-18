@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Godot;
-using Utils.Animation;
-using Player.AnimationHandlers;
-using Player;
+using scripts.Player.AnimationHandlers;
+using scripts.Player;
+using scripts.Utils.Animation;
 
 public partial class PlayerController: CharacterBody2D{
 

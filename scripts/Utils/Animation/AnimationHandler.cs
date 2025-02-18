@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Godot;
 
-namespace Utils.Animation;
+namespace scripts.Utils.Animation;
 
 public class AnimationHandler : IAnimationHandler
 {

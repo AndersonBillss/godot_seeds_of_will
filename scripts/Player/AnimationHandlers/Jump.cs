@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Utils.Animation;
+using scripts.Utils.Animation;
 
-namespace Player.AnimationHandlers;
+namespace scripts.Player.AnimationHandlers;
 
 class Jump : PlayerAnimationHandler
 {

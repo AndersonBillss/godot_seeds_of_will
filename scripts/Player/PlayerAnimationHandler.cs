@@ -1,7 +1,7 @@
 using System;
-using Utils.Animation;
-namespace Player;
+using scripts.Utils.Animation;
 
+namespace scripts.Player;
 public class PlayerAnimationHandler : AnimationHandler {
     public AnimationLink head { get; private set; }
     public AnimationLink body { get; private set; }

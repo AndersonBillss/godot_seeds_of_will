@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Godot;
-using Utils.Animation;
-namespace Player.AnimationHandlers;
+using scripts.Utils.Animation;
+
+namespace scripts.Player.AnimationHandlers;
 
 class Default : PlayerAnimationHandler
 {

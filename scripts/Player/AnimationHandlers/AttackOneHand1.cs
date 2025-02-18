@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Godot;
-using Utils.Animation;
+using scripts.Utils.Animation;
 
-namespace Player.AnimationHandlers;
+namespace scripts.Player.AnimationHandlers;
 
 class AttackOneHand1: PlayerAnimationHandler{
     private AnimatedSprite2D _selectedWeaponSprites;

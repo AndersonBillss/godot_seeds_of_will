@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using Godot;
-using Utils.Animation;
 
-namespace Utils.Animation;
+namespace scripts.Utils.Animation;
 class AnimationFactory : IAnimationFactory {
     private Dictionary<string, AnimationHandler> _animationMap;
     private AnimationHandler _currentAnimationHandler = null;
