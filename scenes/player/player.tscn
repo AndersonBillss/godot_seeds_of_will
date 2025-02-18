@@ -919,6 +919,7 @@ z_index = 130
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterBody"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_p7yun")
+animation = &"idle"
 
 [node name="RotationCenter" type="Node2D" parent="CharacterBody"]
 position = Vector2(-6.99999, 15)

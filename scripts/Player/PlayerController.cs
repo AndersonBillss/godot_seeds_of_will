@@ -15,7 +15,6 @@ public partial class PlayerController : CharacterBody2D
 
     public override void _Ready()
     {
-		AnimationInit();
         collisionBox = GetNode<CollisionShape2D>("Collision");
 		center = collisionBox.Position;
 	    foreach (Node child in GetChildren())
@@ -25,9 +24,11 @@ public partial class PlayerController : CharacterBody2D
                 _weapons.Add(weapon);
             }
         }
-		if(_weapons.Count > 0)
-		_selectedWeaponSprites = _weapons[0].GetNode<AnimatedSprite2D>("SwordSprites");
-		_selectedWeaponSlash = _weapons[0].GetNode<Sprite2D>("SlashSprite");
+		if(_weapons.Count > 0){
+			_selectedWeaponSprites = _weapons[0].GetNode<AnimatedSprite2D>("SwordSprites");
+			_selectedWeaponSlash = _weapons[0].GetNode<Sprite2D>("SlashSprite");
+		}
+		AnimationInit();
     }
 
     public override void _PhysicsProcess(double delta)
