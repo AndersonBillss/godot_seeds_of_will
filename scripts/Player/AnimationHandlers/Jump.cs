@@ -3,9 +3,10 @@ using Utils.Animation;
 
 namespace Player.AnimationHandlers;
 
-class Jump : AnimationHandlerBase
+class Jump : PlayerAnimationHandler
 {
-    public Jump(string animationName) : base(animationName) { }
+    public Jump(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
 
     public override Jump Init(){
         restartTimer = true;

@@ -4,9 +4,10 @@ using Utils.Animation;
 
 namespace Player.AnimationHandlers;
 
-class Fall : AnimationHandlerBase
+class Fall : PlayerAnimationHandler
 {
-    public Fall(string animationName) : base(animationName){ }
+    public Fall(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
 
     public override Fall Init(){
         restartTimer = true;

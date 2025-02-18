@@ -3,10 +3,10 @@ using Utils.Animation;
 
 namespace Player.AnimationHandlers;
 
-class Run : AnimationHandlerBase
+class Run : PlayerAnimationHandler
 {
-    public Run(string animationName) : base(animationName){
-    }
+    public Run(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
     public override Run Init(){
         animationLength = head.GetFrameCount("run");
         SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});

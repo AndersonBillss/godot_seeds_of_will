@@ -35,14 +35,14 @@ public partial class PlayerController: CharacterBody2D{
         leftLeg = new AnimationLink(leftLegParent);
 
 
-        AnimationCreator animationCreator = new(head, body, rightArm, leftArm, rightLeg, leftLeg);
+        AnimationBuilder builder = new(head, body, rightArm, leftArm, rightLeg, leftLeg);
         _animationMap = new Dictionary<string, AnimationHandler> {
-            {"attack_one_hand_1", animationCreator.AddAnimationLinks(new AttackOneHand1("attack_one_hand_1")).SetWeapon(_selectedWeaponSprites, _selectedWeaponSlash).Init()},
-            {"default", animationCreator.AddAnimationLinks(new Default("default")).Init()},
-            {"fall", animationCreator.AddAnimationLinks(new Fall("fall")).Init()},
-            {"jump", animationCreator.AddAnimationLinks(new Jump("jump")).Init()},
-            {"run", animationCreator.AddAnimationLinks(new Run("run")).Init()},
-            {"walk", animationCreator.AddAnimationLinks(new Walk("walk")).Init()}
+            {"attack_one_hand_1", builder.Build<AttackOneHand1>("attack_one_hand_1").SetWeapon(_selectedWeaponSprites, _selectedWeaponSlash).Init()},
+            {"default", builder.Build<Default>("default").Init()},
+            {"fall", builder.Build<Fall>("fall").Init()},
+            {"jump", builder.Build<Jump>("jump").Init()},
+            {"run", builder.Build<Run>("run").Init()},
+            {"walk", builder.Build<Walk>("walk").Init()}
         };
 
         _playerAnimationFactory = new(_animationMap, _animationTimer);

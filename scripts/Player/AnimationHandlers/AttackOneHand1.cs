@@ -4,21 +4,26 @@ using Utils.Animation;
 
 namespace Player.AnimationHandlers;
 
-class AttackOneHand1: AnimationHandlerBase{
+class AttackOneHand1: PlayerAnimationHandler{
     private AnimatedSprite2D _selectedWeaponSprites;
     private Sprite2D _selectedWeaponSlash;
 
-    public AttackOneHand1(string animationName) : base(animationName){}
+    public AttackOneHand1(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
+
     public override AttackOneHand1 Init(){
+        SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});
         repeatAnimation = false;
         allowInterruption = false;
         restartTimer = true;
         animationLength = 3;
-        SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});
         return this;
     }
 
     public override void Start(){
+        if (_selectedWeaponSprites == null || _selectedWeaponSlash == null) {
+            throw new System.Exception("Weapon sprites not assigned in AttackOneHand1");
+        } 
         base.Start();
         _selectedWeaponSprites.Visible = true;
         MapLocation(_selectedWeaponSprites, new float[3]{-29, 46, 155});

@@ -3,9 +3,10 @@ using Utils.Animation;
 
 namespace Player.AnimationHandlers;
 
-class Walk : AnimationHandlerBase
+class Walk : PlayerAnimationHandler
 {
-    public Walk(string animationName) : base(animationName) { }
+  public Walk(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
 
     public override Walk Init(){
         syncAnimation = false;
