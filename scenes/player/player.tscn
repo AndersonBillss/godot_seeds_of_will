@@ -1064,7 +1064,6 @@ z_index = 160
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightArm"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_hxkov")
-animation = &"attack_one_hand_1"
 
 [node name="RotationCenter" type="Node2D" parent="CharacterRightArm"]
 position = Vector2(-5, -15)

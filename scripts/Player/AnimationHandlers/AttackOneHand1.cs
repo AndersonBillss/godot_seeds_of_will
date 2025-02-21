@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using Godot;
 using scripts.Utils.Animation;
 
@@ -8,8 +9,8 @@ class AttackOneHand1: PlayerAnimationHandler{
     private AnimatedSprite2D _selectedWeaponSprites;
     private Sprite2D _selectedWeaponSlash;
 
-    public AttackOneHand1(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
+    public AttackOneHand1(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
     public override AttackOneHand1 Init(){
         SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});
@@ -21,6 +22,8 @@ class AttackOneHand1: PlayerAnimationHandler{
     }
 
     public override void Start(){
+        _selectedWeaponSlash = sharedAnimationProperties.selectedWeaponSlash;
+        _selectedWeaponSprites = sharedAnimationProperties.selectedWeaponSprites;
         if (_selectedWeaponSprites == null || _selectedWeaponSlash == null) {
             throw new System.Exception("Weapon sprites not assigned in AttackOneHand1");
         } 
@@ -59,11 +62,5 @@ class AttackOneHand1: PlayerAnimationHandler{
         _selectedWeaponSprites.Visible = false;
         _selectedWeaponSprites.Frame = 0;
         _selectedWeaponSprites.ZIndex = 0;
-    }
-
-    public AttackOneHand1 SetWeapon(AnimatedSprite2D selectedWeaponSprites, Sprite2D selectedWeaponSlash){
-        _selectedWeaponSprites = selectedWeaponSprites;
-        _selectedWeaponSlash = selectedWeaponSlash;
-        return this;
     }
 }

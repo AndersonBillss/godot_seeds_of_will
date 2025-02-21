@@ -5,8 +5,8 @@ namespace scripts.Player.AnimationHandlers;
 
 class Walk : PlayerAnimationHandler
 {
-  public Walk(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
+  public Walk(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
     public override Walk Init(){
         syncAnimation = false;

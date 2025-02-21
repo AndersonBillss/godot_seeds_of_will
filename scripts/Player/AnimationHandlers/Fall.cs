@@ -5,8 +5,8 @@ namespace scripts.Player.AnimationHandlers;
 
 class Fall : PlayerAnimationHandler
 {
-    public Fall(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
+    public Fall(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
     public override Fall Init(){
         restartTimer = true;

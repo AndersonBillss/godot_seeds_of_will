@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using scripts.Player;
 
 public partial class PlayerController : CharacterBody2D
 {
@@ -8,6 +9,7 @@ public partial class PlayerController : CharacterBody2D
 	public const float walkSpeed = 300.0f;
 	public const float runSpeed = 500.0f;
 	public const float JumpVelocity = -1200.0f;
+	public SharedAnimationProperties sharedAnimationProperties = new();
 
 	private List<Weapon> _weapons = new();
 	private AnimatedSprite2D _selectedWeaponSprites;
@@ -28,6 +30,8 @@ public partial class PlayerController : CharacterBody2D
 			_selectedWeaponSprites = _weapons[0].GetNode<AnimatedSprite2D>("SwordSprites");
 			_selectedWeaponSlash = _weapons[0].GetNode<Sprite2D>("SlashSprite");
 		}
+		sharedAnimationProperties.selectedWeaponSprites = _selectedWeaponSprites;
+		sharedAnimationProperties.selectedWeaponSlash = _selectedWeaponSlash;
 		AnimationInit();
     }
 

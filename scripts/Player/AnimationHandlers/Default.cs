@@ -5,8 +5,8 @@ namespace scripts.Player.AnimationHandlers;
 
 class Default : PlayerAnimationHandler
 {
-    public Default(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg) { }
+    public Default(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
+        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
     public override AnimationHandler Init(){
         animationLength = body.GetFrameCount("idle");
