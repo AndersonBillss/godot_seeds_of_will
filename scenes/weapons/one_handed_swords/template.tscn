@@ -42,7 +42,6 @@ script = ExtResource("3_ouljl")
 
 [node name="SwordSprites" type="AnimatedSprite2D" parent="."]
 visible = false
-z_index = 155
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_efbky")
 animation = &"angles"

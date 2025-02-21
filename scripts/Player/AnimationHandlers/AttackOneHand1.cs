@@ -16,7 +16,7 @@ class AttackOneHand1: PlayerAnimationHandler{
         repeatAnimation = false;
         allowInterruption = false;
         restartTimer = true;
-        animationLength = 3;
+        animationLength = rightArm.GetFrameCount("attack_one_hand_1");
         return this;
     }
 
@@ -26,26 +26,39 @@ class AttackOneHand1: PlayerAnimationHandler{
         } 
         base.Start();
         _selectedWeaponSprites.Visible = true;
-        MapLocation(_selectedWeaponSprites, new float[3]{-29, 46, 155});
+        MapLocation(_selectedWeaponSprites, new float[3]{-28, 44, 155});
         _selectedWeaponSprites.Frame = 0;
+        _selectedWeaponSprites.ZIndex = 155;
     }
     public override void NextFrame(int n){
         base.NextFrame(n);
         if(n == 1){
             _selectedWeaponSlash.Visible = true;
-            MapLocation(_selectedWeaponSprites, new float[3]{-13, -46, -90});
-            _selectedWeaponSprites.Frame = 2;
+            MapLocation(_selectedWeaponSprites, new float[3]{26, -38, -40});
+            _selectedWeaponSprites.Frame = 1;
+            _selectedWeaponSprites.ZIndex = 0;
         } else if(n == 2){
             _selectedWeaponSlash.Visible = false;
-            MapLocation(_selectedWeaponSprites, new float[3]{19, -41, -38});
+            MapLocation(_selectedWeaponSprites, new float[3]{-26, -32, -118});
+            _selectedWeaponSprites.Frame = 2;
+        } else if(n == 3){
+            _selectedWeaponSlash.Visible = false;
+            MapLocation(_selectedWeaponSprites, new float[3]{-14, -43, -95});
+            _selectedWeaponSprites.Frame = 1;
+        } else if(n == 4){
+            head.animatedSprite.ZIndex = 170;
+            _selectedWeaponSlash.Visible = false;
+            MapLocation(_selectedWeaponSprites, new float[3]{16, -41, -43});
             _selectedWeaponSprites.Frame = 1;
         }
     }
     public override void End(){
         base.End();
+        head.animatedSprite.ZIndex = 140;
         _selectedWeaponSlash.Visible = false;
         _selectedWeaponSprites.Visible = false;
         _selectedWeaponSprites.Frame = 0;
+        _selectedWeaponSprites.ZIndex = 0;
     }
 
     public AttackOneHand1 SetWeapon(AnimatedSprite2D selectedWeaponSprites, Sprite2D selectedWeaponSlash){
