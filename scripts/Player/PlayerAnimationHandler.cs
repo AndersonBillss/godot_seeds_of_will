@@ -50,5 +50,5 @@ public class AnimationBuilder {
 public class SharedAnimationProperties{
     public bool holdingWeapon = false;
 	public AnimatedSprite2D selectedWeaponSprites;
-	public Sprite2D selectedWeaponSlash;
+	public AnimatedSprite2D selectedWeaponSlashSprites;
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4ilxd8uvaevv"
-path="res://.godot/imported/One_Hand_Slash_1_Template.png-4cd09f14f96217ef0b361ea26d941875.ctex"
+uid="uid://dqt3ijc8yyic5"
+path="res://.godot/imported/67c8019ea119ed91c24ed070.png-1b875acef9280e395924923dccdd0c09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Weapons/One_Hand_Slash_1_Template.png"
-dest_files=["res://.godot/imported/One_Hand_Slash_1_Template.png-4cd09f14f96217ef0b361ea26d941875.ctex"]
+source_file="res://scenes/weapons/67c8019ea119ed91c24ed070.png"
+dest_files=["res://.godot/imported/67c8019ea119ed91c24ed070.png-1b875acef9280e395924923dccdd0c09.ctex"]
 
 [params]
 

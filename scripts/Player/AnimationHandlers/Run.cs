@@ -7,12 +7,12 @@ namespace scripts.Player.AnimationHandlers;
 class Run : PlayerAnimationHandler
 {
     private AnimatedSprite2D _selectedWeaponSprites;
-    private readonly float[] _rightArmWeaponPosition1 = new float[3]{13,3,-25};
-    private readonly float[] _rightArmWeaponPosition2 = new float[3]{13,0,-27};
-    private readonly float[] _rightArmReturnPosition = new float[3]{0,0,0};
-    private readonly float[] _weaponPosition1 = new float[3]{32,-23,-25};
-    private readonly float[] _weaponPosition2 = new float[3]{32,-26,-27};
-    private readonly float[] _weaponReturnPosition = new float[3]{0,0,0};
+    private readonly float[] _rightArmWeaponPosition1 = [13,3,-25];
+    private readonly float[] _rightArmWeaponPosition2 = [13,0,-27];
+    private readonly float[] _rightArmReturnPosition = [0,0,0];
+    private readonly float[] _weaponPosition1 = [32,-23,-25];
+    private readonly float[] _weaponPosition2 = [32,-26,-27];
+    private readonly float[] _weaponReturnPosition = [0,0,0];
 
     public Run(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
         : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }

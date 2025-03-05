@@ -14,7 +14,7 @@ public partial class PlayerController : CharacterBody2D
 
 	private List<Weapon> _weapons = new();
 	private AnimatedSprite2D _selectedWeaponSprites;
-	private Sprite2D _selectedWeaponSlash;
+	private AnimatedSprite2D _selectedWeaponSlashSprites;
 
     public override void _Ready()
     {
@@ -29,10 +29,10 @@ public partial class PlayerController : CharacterBody2D
         }
 		if(_weapons.Count > 0){
 			_selectedWeaponSprites = _weapons[0].GetNode<AnimatedSprite2D>("SwordSprites");
-			_selectedWeaponSlash = _weapons[0].GetNode<Sprite2D>("SlashSprite");
+			_selectedWeaponSlashSprites = _weapons[0].GetNode<AnimatedSprite2D>("SlashSprites");
 		}
 		sharedAnimationProperties.selectedWeaponSprites = _selectedWeaponSprites;
-		sharedAnimationProperties.selectedWeaponSlash = _selectedWeaponSlash;
+		sharedAnimationProperties.selectedWeaponSlashSprites = _selectedWeaponSlashSprites;
 		AnimationInit();
     }
 

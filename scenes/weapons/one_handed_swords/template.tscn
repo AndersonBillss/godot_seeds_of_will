@@ -1,8 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://wv4i3fahmyq4"]
+[gd_scene load_steps=12 format=3 uid="uid://wv4i3fahmyq4"]
 
 [ext_resource type="Texture2D" uid="uid://ky5v2hfenctg" path="res://assets/Weapons/Sword_Template.png" id="1_rww3c"]
-[ext_resource type="Texture2D" uid="uid://vljxsd15w17g" path="res://assets/Weapons/One_Hand_Slash_1_Template.png" id="2_kdnq3"]
+[ext_resource type="Texture2D" uid="uid://b4ilxd8uvaevv" path="res://assets/Weapons/One_Hand_Slash_1_Template.png" id="2_kdnq3"]
 [ext_resource type="Script" uid="uid://dsu0mhlqr4tat" path="res://scripts/Weapons/OneHandedSword.cs" id="3_ouljl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn6h0"]
+atlas = ExtResource("2_kdnq3")
+region = Rect2(0, 0, 2160, 1620)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t58h4"]
+atlas = ExtResource("2_kdnq3")
+region = Rect2(0, 1620, 2160, 1620)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2m4xd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn6h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t58h4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65ue7"]
 atlas = ExtResource("1_rww3c")
@@ -41,17 +63,16 @@ height = 224.0
 z_index = 155
 script = ExtResource("3_ouljl")
 
+[node name="SlashSprites" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_2m4xd")
+
 [node name="SwordSprites" type="AnimatedSprite2D" parent="."]
 visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_efbky")
 animation = &"angles"
-
-[node name="SlashSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(10, 0)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_kdnq3")
 
 [node name="HitArea" type="Area2D" parent="."]
 visible = false

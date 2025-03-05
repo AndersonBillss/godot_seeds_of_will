@@ -7,8 +7,8 @@ namespace scripts.Player.AnimationHandlers;
 class Walk : PlayerAnimationHandler
 {
     private AnimatedSprite2D _selectedWeaponSprites;
-    private readonly float[] WeaponPosition = new float[3]{27,-16,-2};
-    private readonly float[] WeaponReturnPosition = new float[3]{0,0,0};
+    private readonly float[] WeaponPosition = [27,-16,-2];
+    private readonly float[] WeaponReturnPosition = [0,0,0];
     public Walk(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
         : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
