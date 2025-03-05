@@ -4,12 +4,9 @@ using scripts.Utils.Animation;
 
 namespace scripts.Player.AnimationHandlers;
 
-class AttackOneHand1: PlayerAnimationHandler{
+class AttackOneHand1(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) : PlayerAnimationHandler(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties){
     private AnimatedSprite2D _selectedWeaponSprites;
     private AnimatedSprite2D _selectedWeaponSlashSprites;
-
-    public AttackOneHand1(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
 
     public override AttackOneHand1 Init(){
         SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});

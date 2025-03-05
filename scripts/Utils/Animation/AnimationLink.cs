@@ -3,17 +3,12 @@ using Godot;
 
 namespace scripts.Utils.Animation;
 
-public class AnimationLink{
-    public Node2D parentNode;
-    public AnimatedSprite2D animatedSprite;
-    public Node2D rotationCenter;
-    public AnimationLink[] branches;
-    public AnimationLink(Node2D parentNode, AnimationLink[] branches = null){
-        this.parentNode = parentNode;
-        animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
-        rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
-        this.branches = branches ?? Array.Empty<AnimationLink>();
-    }
+public class AnimationLink(Node2D parentNode, AnimationLink[] branches = null)
+{
+    public Node2D parentNode = parentNode;
+    public AnimatedSprite2D animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
+    public Node2D rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
+    public AnimationLink[] branches = branches ?? [];
 
     public void SetRotation(float degrees){
         //convert degrees into radians

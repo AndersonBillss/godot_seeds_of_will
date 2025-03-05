@@ -4,7 +4,7 @@ using Godot;
 
 namespace scripts.Utils.Animation;
 
-public class AnimationHandler : IAnimationHandler
+public class AnimationHandler(string animationName) : IAnimationHandler
 {
     private readonly List<AnimationLink> _animationLinks = new();
     private Dictionary<AnimationLink, string> _animationMap= new();
@@ -15,11 +15,8 @@ public class AnimationHandler : IAnimationHandler
     public bool restartTimer = true;
     public bool syncAnimation = true;
 
-    public string animationName;
+    public string animationName = animationName;
 
-    public AnimationHandler(string animationName){
-        this.animationName = animationName;
-    }
     public void SetAnimation(List<AnimationLink> animationLinks, string animationNameInput = null){
         animationNameInput ??= animationName;
     

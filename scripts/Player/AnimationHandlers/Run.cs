@@ -4,7 +4,7 @@ using scripts.Utils.Animation;
 
 namespace scripts.Player.AnimationHandlers;
 
-class Run : PlayerAnimationHandler
+class Run(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) : PlayerAnimationHandler(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties)
 {
     private AnimatedSprite2D _selectedWeaponSprites;
     private readonly float[] _rightArmWeaponPosition1 = [13,3,-25];
@@ -14,11 +14,9 @@ class Run : PlayerAnimationHandler
     private readonly float[] _weaponPosition2 = [32,-26,-27];
     private readonly float[] _weaponReturnPosition = [0,0,0];
 
-    public Run(string animationName, AnimationLink head, AnimationLink body, AnimationLink rightArm, AnimationLink leftArm, AnimationLink rightLeg, AnimationLink leftLeg, SharedAnimationProperties sharedAnimationProperties) 
-        : base(animationName, head, body, rightArm, leftArm, rightLeg, leftLeg, sharedAnimationProperties) { }
     public override Run Init(){
         animationLength = head.GetFrameCount("run");
-        SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});
+        SetAnimation([head, body, rightArm, leftArm, rightLeg, leftLeg]);
         _selectedWeaponSprites = sharedAnimationProperties.selectedWeaponSprites;
         return this;
     }

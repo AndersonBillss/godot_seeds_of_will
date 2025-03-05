@@ -2,16 +2,10 @@ using System.Collections.Generic;
 using Godot;
 
 namespace scripts.Utils.Animation;
-class AnimationFactory : IAnimationFactory {
-    private Dictionary<string, AnimationHandler> _animationMap;
+class AnimationFactory(Dictionary<string, AnimationHandler> animationMap, Timer timer) : IAnimationFactory {
+    private Dictionary<string, AnimationHandler> _animationMap = animationMap;
     private AnimationHandler _currentAnimationHandler = null;
-    private readonly Timer _animationTimer;
-
-    public AnimationFactory(Dictionary<string, AnimationHandler> animationMap, Timer timer){
-        _animationMap = animationMap;
-        _animationTimer = timer;
-    }
-
+    private readonly Timer _animationTimer = timer;
     private int _iterationCount = 0; 
     private string _currentAnimation = "";
     private int _animationLength = 0;
