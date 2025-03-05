@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Godot;
 using scripts.Utils.Animation;
 
@@ -9,7 +8,7 @@ class AttackOneHand1(string animationName, AnimationLink head, AnimationLink bod
     private AnimatedSprite2D _selectedWeaponSlashSprites;
 
     public override AttackOneHand1 Init(){
-        SetAnimation(new List<AnimationLink>(){head, body, rightArm, leftArm, rightLeg, leftLeg});
+        SetAnimation([head, body, rightArm, leftArm, rightLeg, leftLeg]);
         repeatAnimation = false;
         allowInterruption = false;
         restartTimer = true;

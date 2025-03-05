@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using scripts.Utils.Animation;
 
 namespace scripts.Player.AnimationHandlers;

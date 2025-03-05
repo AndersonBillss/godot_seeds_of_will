@@ -6,8 +6,8 @@ namespace scripts.Utils.Animation;
 
 public class AnimationHandler(string animationName) : IAnimationHandler
 {
-    private readonly List<AnimationLink> _animationLinks = new();
-    private Dictionary<AnimationLink, string> _animationMap= new();
+    private readonly List<AnimationLink> _animationLinks = [];
+    private Dictionary<AnimationLink, string> _animationMap= [];
 
     public int animationLength = 0;
     public bool allowInterruption = true;

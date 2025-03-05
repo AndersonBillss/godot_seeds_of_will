@@ -9,11 +9,6 @@ public partial class Weapon : Node2D
 		weaponName = Name;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	public void Attack(){
 		GD.Print("Attacked with Weapon: " + weaponName);
 	}
