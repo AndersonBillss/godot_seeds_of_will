@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Godot;
 using scripts.Player;
 
@@ -92,6 +93,7 @@ public partial class PlayerController : CharacterBody2D
 
 		if (Input.IsActionJustPressed("Attack"))
         {
+			sharedAnimationProperties.holdingWeapon = true;
             Attack();
         }
 

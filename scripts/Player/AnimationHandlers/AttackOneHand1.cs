@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using Godot;
 using scripts.Utils.Animation;
 
@@ -31,7 +30,6 @@ class AttackOneHand1: PlayerAnimationHandler{
         _selectedWeaponSprites.Visible = true;
         MapLocation(_selectedWeaponSprites, new float[3]{-28, 44, 155});
         _selectedWeaponSprites.Frame = 0;
-        _selectedWeaponSprites.ZIndex = 155;
     }
     public override void NextFrame(int n){
         base.NextFrame(n);
@@ -39,8 +37,10 @@ class AttackOneHand1: PlayerAnimationHandler{
             _selectedWeaponSlash.Visible = true;
             MapLocation(_selectedWeaponSprites, new float[3]{26, -38, -40});
             _selectedWeaponSprites.Frame = 1;
-            _selectedWeaponSprites.ZIndex = 0;
         } else if(n == 2){
+            head.animatedSprite.ZIndex = 30;
+            body.animatedSprite.ZIndex = 30;
+            rightArm.animatedSprite.ZIndex = 30;
             _selectedWeaponSlash.Visible = false;
             MapLocation(_selectedWeaponSprites, new float[3]{-26, -32, -118});
             _selectedWeaponSprites.Frame = 2;
@@ -49,7 +49,6 @@ class AttackOneHand1: PlayerAnimationHandler{
             MapLocation(_selectedWeaponSprites, new float[3]{-14, -43, -95});
             _selectedWeaponSprites.Frame = 1;
         } else if(n == 4){
-            head.animatedSprite.ZIndex = 170;
             _selectedWeaponSlash.Visible = false;
             MapLocation(_selectedWeaponSprites, new float[3]{16, -41, -43});
             _selectedWeaponSprites.Frame = 1;
@@ -57,7 +56,9 @@ class AttackOneHand1: PlayerAnimationHandler{
     }
     public override void End(){
         base.End();
-        head.animatedSprite.ZIndex = 140;
+        head.animatedSprite.ZIndex = 0;
+        body.animatedSprite.ZIndex = 0;
+        rightArm.animatedSprite.ZIndex = 0;
         _selectedWeaponSlash.Visible = false;
         _selectedWeaponSprites.Visible = false;
         _selectedWeaponSprites.Frame = 0;

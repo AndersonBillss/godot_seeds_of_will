@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://cc7l5xxs7rgah"]
+[gd_scene load_steps=153 format=3 uid="uid://cc7l5xxs7rgah"]
 
 [ext_resource type="Texture2D" uid="uid://72s5ufkj6e53" path="res://assets/Player/Character_Left_Arm.png" id="1_rxw4c"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerController.cs" id="1_ygy1y"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bw6yjqa4a3gen" path="res://assets/Player/Attack/One_Hand_1/Head.png" id="19_hy6vq"]
 [ext_resource type="Texture2D" uid="uid://sb5ph7gcwyyi" path="res://assets/Player/Run/Character_Run_Right_Arm.png" id="20_sbmtv"]
 [ext_resource type="Texture2D" uid="uid://b3kdmka4uvo34" path="res://assets/Player/Attack/One_Hand_1/Right_Leg.png" id="23_0d6eg"]
+[ext_resource type="Texture2D" uid="uid://biresxc45fotw" path="res://assets/Player/Attack/Character_1_Hand_Sword_Base.png" id="26_nwwjp"]
 [ext_resource type="Texture2D" uid="uid://ky5v2hfenctg" path="res://assets/Weapons/Sword_Template.png" id="27_h8naq"]
 [ext_resource type="Texture2D" uid="uid://cicgxc2takwu8" path="res://assets/Player/Attack/One_Hand_1/Right_Arm.png" id="30_w3vsc"]
 
@@ -881,6 +882,10 @@ region = Rect2(0, 4860, 2160, 1620)
 atlas = ExtResource("30_w3vsc")
 region = Rect2(0, 6480, 2160, 1620)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqxmq"]
+atlas = ExtResource("26_nwwjp")
+region = Rect2(0, 0, 2160, 1620)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jugqv"]
 atlas = ExtResource("20_sbmtv")
 region = Rect2(0, 0, 2160, 1620)
@@ -942,6 +947,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqxmq")
+}],
+"loop": true,
+"name": &"holding_one_hand_weapon",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1078,11 +1091,11 @@ autostart = true
 
 [node name="SwordSprites" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(16, -41)
-rotation = -0.750492
+z_index = 155
+position = Vector2(27, -16)
+rotation = -0.0349066
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_utuw0")
 animation = &"angles"
-frame = 1
 
 [connection signal="timeout" from="Timer" to="." method="AnimateFrame"]

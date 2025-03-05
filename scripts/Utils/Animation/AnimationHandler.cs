@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Godot;
 
 namespace scripts.Utils.Animation;
@@ -28,6 +27,10 @@ public class AnimationHandler : IAnimationHandler
             _animationLinks.Add(link);
             _animationMap[link] = animationNameInput;
         }
+    }
+
+    public void ChangeAnimation(AnimationLink animationLink, string newAnimation){
+        _animationMap[animationLink] = newAnimation;
     }
 
     public virtual AnimationHandler Init(){
