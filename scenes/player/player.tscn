@@ -1390,6 +1390,7 @@ z_index = 120
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterLeftLeg"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ub4a2")
+animation = &"run"
 
 [node name="RotationCenter" type="Node2D" parent="CharacterLeftLeg"]
 
@@ -1420,10 +1421,9 @@ z_index = 150
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterRightLeg"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ule5i")
-animation = &"run"
-frame = 5
 
 [node name="RotationCenter" type="Node2D" parent="CharacterRightLeg"]
+position = Vector2(-7, 15)
 
 [node name="CharacterRightArm" type="Node2D" parent="."]
 z_index = 160
@@ -1451,5 +1451,7 @@ rotation = -0.0349066
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_utuw0")
 animation = &"angles"
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="AnimateFrame"]

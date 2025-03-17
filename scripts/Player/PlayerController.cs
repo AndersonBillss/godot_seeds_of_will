@@ -17,8 +17,7 @@ public partial class PlayerController : CharacterBody2D
 
 	private bool inAirLastFrame;
 
-    public override void _Ready()
-    {
+    public override void _Ready(){
         collisionBox = GetNode<CollisionShape2D>("Collision");
 		center = collisionBox.Position;
 	    foreach (Node child in GetChildren())

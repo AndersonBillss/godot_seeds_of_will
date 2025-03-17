@@ -3,12 +3,33 @@ using Godot;
 
 namespace scripts.Utils.Animation;
 
-public class AnimationLink(Node2D parentNode, AnimationLink[] branches = null)
-{
-    public Node2D parentNode = parentNode;
-    public AnimatedSprite2D animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
-    public Node2D rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
-    public AnimationLink[] branches = branches ?? [];
+public class AnimationLink {
+    public Node2D parentNode;
+    public AnimatedSprite2D animatedSprite;
+    public Node2D rotationCenter;
+    public AnimationLink[] branches;
+    private Vector2 _rotationCenterDefault;
+    public AnimationLink(Node2D parentNode, AnimationLink[] branches = null){
+        this.parentNode = parentNode;
+        animatedSprite = parentNode.GetNode<AnimatedSprite2D>("AnimatedSprite");
+        rotationCenter = parentNode.GetNode<Node2D>("RotationCenter");
+        this.branches = branches ?? [];
+       _rotationCenterDefault = rotationCenter.Position;
+    }
+
+    /// <summary>
+    /// Certain frames require different animation centers. This allows you to change the rotation center.
+    /// </summary>
+    public void SetRotationCenter(Vector2 pos){
+        rotationCenter.Position = pos;
+    }
+
+    /// <summary>
+    /// This allows you to reset the rotation center after you have changed it.
+    /// </summary>
+    public void ResetRotationCenter(){
+        rotationCenter.Position = _rotationCenterDefault;
+    }
 
     public void SetRotation(float degrees){
         //convert degrees into radians

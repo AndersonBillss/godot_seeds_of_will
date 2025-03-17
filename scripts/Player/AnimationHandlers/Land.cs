@@ -8,8 +8,17 @@ class Land(string animationName, AnimationLink head, AnimationLink body, Animati
         restartTimer = true;
         repeatAnimation = false;
         allowInterruption = false;
+        syncAnimation = false;
         animationLength = rightLeg.GetFrameCount("land");
         SetAnimation([rightLeg, leftLeg, rightArm, leftArm, head, body]);
+        SetAnimation([rightLeg, leftLeg], "run");
         return this;
+    }
+
+    public override void Start(){
+        base.Start();
+        if(sharedAnimationProperties.running)
+        rightLeg.SetFrame(5);
+        leftLeg.SetFrame(5);
     }
 }
