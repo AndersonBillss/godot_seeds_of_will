@@ -10,10 +10,12 @@ public partial class PlayerController : CharacterBody2D
 	public const float runSpeed = 500.0f;
 	public const float JumpVelocity = -1200.0f;
 	public SharedAnimationProperties sharedAnimationProperties = new();
-
-	private List<Weapon> _weapons = new();
+	private List<Weapon> _weapons = [];
 	private AnimatedSprite2D _selectedWeaponSprites;
 	private AnimatedSprite2D _selectedWeaponSlashSprites;
+	
+
+	private bool inAirLastFrame;
 
     public override void _Ready()
     {
@@ -38,6 +40,7 @@ public partial class PlayerController : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+		bool onFloor = IsOnFloor();
 
 		// Add the gravity.
 		if (!IsOnFloor())
@@ -72,14 +75,16 @@ public partial class PlayerController : CharacterBody2D
 			Flip();
 		}
 		
-		if (direction.X != 0 && IsOnFloor()){
+		sharedAnimationProperties.running = false;
+		if (direction.X != 0 && onFloor){
 			if(Input.IsActionPressed("walk")){
 				PlayAnimation("walk");
 			} else {
 				PlayAnimation("run");
+				sharedAnimationProperties.running = true;
 			}
 		}
-		if(direction.X == 0 && IsOnFloor()){
+		if(direction.X == 0 && onFloor){
 			PlayAnimation("default");
 		}
 		if(!IsOnFloor()){
@@ -96,6 +101,11 @@ public partial class PlayerController : CharacterBody2D
             Attack();
         }
 
+		if(onFloor && inAirLastFrame){
+			PlayAnimation("land");
+		}
+
+		inAirLastFrame = !onFloor;
 		Velocity = velocity;
 		MoveAndSlide();
 	}

@@ -7,7 +7,7 @@ namespace scripts.Utils.Animation;
 public class AnimationHandler(string animationName) : IAnimationHandler
 {
     private readonly List<AnimationLink> _animationLinks = [];
-    private Dictionary<AnimationLink, string> _animationMap= [];
+    private Dictionary<AnimationLink, string> _animationMap = [];
 
     public int animationLength = 0;
     public bool allowInterruption = true;
@@ -19,14 +19,14 @@ public class AnimationHandler(string animationName) : IAnimationHandler
 
     public void SetAnimation(List<AnimationLink> animationLinks, string animationNameInput = null){
         animationNameInput ??= animationName;
-    
         foreach(AnimationLink link in animationLinks){
             _animationLinks.Add(link);
             _animationMap[link] = animationNameInput;
         }
     }
 
-    public void ChangeAnimation(AnimationLink animationLink, string newAnimation){
+    public void ChangeAnimation(AnimationLink animationLink, string newAnimation = null){
+        newAnimation ??= animationName;
         _animationMap[animationLink] = newAnimation;
     }
 

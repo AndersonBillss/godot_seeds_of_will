@@ -12,6 +12,7 @@ class AttackOneHand1(string animationName, AnimationLink head, AnimationLink bod
         repeatAnimation = false;
         allowInterruption = false;
         restartTimer = true;
+        syncAnimation = false; // Change this to false so that running animation continues
         animationLength = rightArm.GetFrameCount("attack_one_hand_1");
         return this;
     }
@@ -22,11 +23,24 @@ class AttackOneHand1(string animationName, AnimationLink head, AnimationLink bod
         if (_selectedWeaponSprites == null || _selectedWeaponSlashSprites == null) {
             throw new System.Exception("Weapon sprites not assigned in AttackOneHand1");
         } 
-        base.Start();
         _selectedWeaponSprites.Visible = true;
         MapLocation(_selectedWeaponSprites, [-28, 44, 155]);
         _selectedWeaponSprites.Frame = 0;
         _selectedWeaponSlashSprites.Frame = 0;
+        rightLeg.animatedSprite.ZIndex = 10;
+        // If the player is running, keep playing the running animation
+        if(sharedAnimationProperties.running){
+            ChangeAnimation(rightLeg, "run");
+            ChangeAnimation(leftLeg, "run");
+        } else {
+            ChangeAnimation(rightLeg);
+            ChangeAnimation(leftLeg);        
+        }
+        base.Start();
+        if(sharedAnimationProperties.running){
+            rightLeg.SetFrame(2);
+            leftLeg.SetFrame(2);
+        }
     }
     public override void NextFrame(int n){
         base.NextFrame(n);
@@ -62,5 +76,6 @@ class AttackOneHand1(string animationName, AnimationLink head, AnimationLink bod
         _selectedWeaponSprites.Visible = false;
         _selectedWeaponSprites.Frame = 0;
         _selectedWeaponSprites.ZIndex = 0;
+        rightLeg.animatedSprite.ZIndex = 0;
     }
 }

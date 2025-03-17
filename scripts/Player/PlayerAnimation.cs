@@ -30,7 +30,7 @@ public partial class PlayerController: CharacterBody2D{
         head = new AnimationLink(headParent);
         rightArm = new AnimationLink(rightArmParent);
         leftArm = new AnimationLink(leftArmParent);
-        body = new AnimationLink(bodyParent, new AnimationLink[] { head, rightArm, leftArm });
+        body = new AnimationLink(bodyParent, [head, rightArm, leftArm]);
         rightLeg = new AnimationLink(rightLegParent);
         leftLeg = new AnimationLink(leftLegParent);
 
@@ -39,8 +39,9 @@ public partial class PlayerController: CharacterBody2D{
         _animationMap = new Dictionary<string, AnimationHandler> {
             {"attack_one_hand_1", builder.Build<AttackOneHand1>("attack_one_hand_1").Init()},
             {"default", builder.Build<Default>("default").Init()},
-            {"fall", builder.Build<Fall>("fall").Init()},
             {"jump", builder.Build<Jump>("jump").Init()},
+            {"fall", builder.Build<Fall>("fall").Init()},
+            {"land", builder.Build<Land>("land").Init()},
             {"run", builder.Build<Run>("run").Init()},
             {"walk", builder.Build<Walk>("walk").Init()}
         };

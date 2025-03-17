@@ -8,8 +8,7 @@ class Jump(string animationName, AnimationLink head, AnimationLink body, Animati
         restartTimer = true;
         repeatAnimation = false;
         animationLength = rightLeg.GetFrameCount("jump");
-        SetAnimation([rightLeg, leftLeg]);
-        SetAnimation([rightArm, leftArm, head, body], "run");
+        SetAnimation([rightLeg, leftLeg, rightArm, leftArm, head, body]);
         return this;
     }
 }

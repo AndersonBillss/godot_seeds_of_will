@@ -6,10 +6,9 @@ class Fall(string animationName, AnimationLink head, AnimationLink body, Animati
 {
     public override Fall Init(){
         restartTimer = true;
-        repeatAnimation = false;
+        repeatAnimation = true;
         animationLength = rightLeg.GetFrameCount("fall");
-        SetAnimation([rightLeg, leftLeg]);
-        SetAnimation([rightArm, leftArm, head, body], "run");
+        SetAnimation([rightLeg, leftLeg, rightArm, leftArm, head, body]);
         return this;
     }
 }

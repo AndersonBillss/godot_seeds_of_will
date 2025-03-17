@@ -40,6 +40,7 @@ public class AnimationBuilder(AnimationLink head, AnimationLink body, AnimationL
 
 public class SharedAnimationProperties{
     public bool holdingWeapon = false;
+    public bool running = false;
 	public AnimatedSprite2D selectedWeaponSprites;
 	public AnimatedSprite2D selectedWeaponSlashSprites;
 }
